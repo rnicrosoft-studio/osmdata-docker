@@ -1,6 +1,6 @@
 # osmdata-docker
 
-![CI](https://github.com/rnicrosoft-studio/osmdata-docker/workflows/CI/badge.svg)
+[![Build and push Docker images CI](https://github.com/rnicrosoft-studio/osmdata-docker/actions/workflows/docker-build-publish.yml/badge.svg)](https://github.com/rnicrosoft-studio/osmdata-docker/actions/workflows/docker-build-publish.yml)
 ![](https://img.shields.io/badge/OSMData-docker-brightgreen)
 ![](https://img.shields.io/docker/image-size/rnicrosoft/osmdata/latest)
 ![](https://img.shields.io/docker/pulls/rnicrosoft/osmdata)
