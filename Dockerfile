@@ -18,7 +18,7 @@ LABEL Name=OSMData Version=${OSMDATA_VERSION}
 
 
 # === master/init.sh ===
-COPY init.sh ./master/
+COPY ./master/init.sh ./master/
 RUN chmod +x ./master/init.sh \
     && ./master/init.sh
 
