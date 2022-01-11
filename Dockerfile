@@ -22,11 +22,6 @@ RUN apt-get update -y \
     && echo ${TZ} > /etc/timezone
 
 
-# === master/init.sh ===
-COPY ./master/init.sh /tmp/
-RUN chmod +x /tmp/init.sh \
-    && /tmp/init.sh \
-    && rm /tmp/init.sh
 
 # === servers/update-planet.yml ===
 RUN apt-get install -y \
@@ -92,7 +87,14 @@ RUN apt-get install -y \
 
 RUN apt-get clean
 
+# === master/init.sh ===
+COPY ./master/init.sh /tmp/
+RUN chmod +x /tmp/init.sh \
+    && /tmp/init.sh \
+    && rm /tmp/init.sh
+
+
+
 #VOLUME /data
 VOLUME ["/data", "/mnt/data", "/home"]
 # ENTRYPOINT [""]
-CMD bash
