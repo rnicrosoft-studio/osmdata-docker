@@ -19,8 +19,7 @@ LABEL Name=OSMData Version=${OSMDATA_VERSION}
 
 # === master/init.sh ===
 COPY ./master/init.sh ./master/
-RUN chmod +x ./master/init.sh \
-    && ./master/init.sh
+RUN chmod +x ./master/init.sh
 
 # === servers/update-planet.yml ===
 RUN apt-get install -y \
@@ -87,6 +86,6 @@ RUN apt-get install -y \
 RUN apt-get clean
 
 #VOLUME /data
-VOLUME ["/data", "/mnt/data/planet"]
+# VOLUME ["/data", "/mnt/data/planet"]
 # ENTRYPOINT [""]
-CMD watch ls
+# CMD watch ls
