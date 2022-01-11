@@ -90,7 +90,7 @@ done
 (cd /home/robot; su -c "git clone https://github.com/fossgis/osmdata $REPOSITORY" robot)
 
 (cd /home/robot; su -c "git clone https://github.com/rnicrosoft-studio/osmdata-docker /home/robot/osmdata-docker" robot)
-(cd /home/robot; su -c "cp osmdata-docker/init-robot.sh $REPOSITORY/init-robot.sh" robot)
+(cd /home/robot; su -c "rm -r $REPOSITORY/master/" robot; su -c "cp -r osmdata-docker/master/ $REPOSITORY/" robot)
 
 # -- Run robot user setup --
 
