@@ -15,6 +15,8 @@ LABEL Name=OSMData Version=${OSMDATA_VERSION}
 #     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
 #     && echo ${TZ} > /etc/timezone \
 #     && rm -rf /var/cache/apk/*
+RUN apt-get update -y \
+    && apt-get dist-upgrade -u -y
 
 
 # === master/init.sh ===
