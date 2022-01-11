@@ -18,7 +18,9 @@ LABEL Name=OSMData Version=${OSMDATA_VERSION}
 
 
 # === master/init.sh ===
-RUN ./master/init.sh
+COPY init.sh ./master/
+RUN chmod +x ./master/init.sh \
+    && ./master/init.sh
 
 # === servers/update-planet.yml ===
 RUN apt-get install -y \
