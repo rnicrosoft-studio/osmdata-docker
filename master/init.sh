@@ -68,10 +68,11 @@ adduser --gecos "Robot User" --disabled-password robot
 
 # -- Prepare planet volume --
 
-MNT=$(find /mnt -mindepth 1 -maxdepth 1 -type d)
+# MNT=$(find /mnt -mindepth 1 -maxdepth 1 -type d)
+MNT=/mnt
 mkdir -p "$MNT/data/planet"
 chown -R robot:robot "$MNT/data"
-umount "$MNT"
+# umount "$MNT"
 
 
 # -- Directory setup --
