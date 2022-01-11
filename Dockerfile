@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:11
 ENV OSMDATA_VERSION="4e368be0f4ff67f9fdab20e4707e7d7d76301eaa"
 
 #LABEL maintainer="mritd <mritd@linux.com>"
@@ -16,6 +16,7 @@ ENV TZ ${TZ}
 #     && echo ${TZ} > /etc/timezone \
 #     && rm -rf /var/cache/apk/*
 RUN apt-get update -y \
+    && DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y tzdata \
     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone
@@ -23,7 +24,8 @@ RUN apt-get update -y \
 
 # === master/init.sh ===
 COPY ./master/init.sh ./master/
-RUN chmod +x ./master/init.sh
+RUN chmod +x ./master/init.sh \
+    && ./master/init.sh
 
 # === servers/update-planet.yml ===
 RUN apt-get install -y \
@@ -46,7 +48,7 @@ RUN apt-get install -y \
     gdal-bin \
     git \
     jq \
-    osmcoastline=2.3.1-1~bpo11+1 \
+    osmcoastline \
     osmium-tool \
     postgis \
     postgresql-13 \
@@ -90,6 +92,6 @@ RUN apt-get install -y \
 RUN apt-get clean
 
 #VOLUME /data
-# VOLUME ["/data", "/mnt/data/planet"]
+VOLUME ["/data", "/mnt/data/planet"]
 # ENTRYPOINT [""]
 # CMD watch ls
