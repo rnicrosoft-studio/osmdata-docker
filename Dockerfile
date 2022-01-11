@@ -23,9 +23,10 @@ RUN apt-get update -y \
 
 
 # === master/init.sh ===
-COPY ./master/init.sh ./master/
-RUN chmod +x ./master/init.sh \
-    && ./master/init.sh
+COPY ./master/init.sh /tmp/
+RUN chmod +x /tmp/init.sh \
+    && /tmp/init.sh \
+    && rm /tmp/init.sh
 
 # === servers/update-planet.yml ===
 RUN apt-get install -y \
@@ -92,6 +93,6 @@ RUN apt-get install -y \
 RUN apt-get clean
 
 #VOLUME /data
-VOLUME ["/data", "/mnt/data/planet"]
+VOLUME ["/data", "/mnt/data", "/home"]
 # ENTRYPOINT [""]
-# CMD watch ls
+CMD bash
