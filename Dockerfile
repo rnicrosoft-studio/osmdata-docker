@@ -99,4 +99,4 @@ ENV USER=robot
 
 #VOLUME /data
 VOLUME ["/data", "/mnt/data", "/home/robot"]
-ENTRYPOINT ["/tmp/init.sh"]
+# ENTRYPOINT [""]
