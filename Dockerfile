@@ -4,18 +4,21 @@ ENV OSMDATA_VERSION="4e368be0f4ff67f9fdab20e4707e7d7d76301eaa"
 #LABEL maintainer="mritd <mritd@linux.com>"
 LABEL Name=OSMData Version=${OSMDATA_VERSION}
 
-# # we use the Asia/Shanghai timezone by default, you can be modified
-# # by `docker build --build-arg=TZ=Other_Timezone ...`
-# ARG TZ="Asia/Shanghai"
+# we use the Asia/Shanghai timezone by default, you can be modified
+# by `docker build --build-arg=TZ=Other_Timezone ...`
+ARG TZ="Asia/Shanghai"
 
-# ENV TZ ${TZ}
+ENV TZ ${TZ}
 
 # RUN apk upgrade \
 #     && apk add bash tzdata \
 #     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
 #     && echo ${TZ} > /etc/timezone \
 #     && rm -rf /var/cache/apk/*
-RUN apt-get update -y
+RUN apt-get update -y \
+    && apt-get install -y tzdata \
+    && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
+    && echo ${TZ} > /etc/timezone
 
 
 # === master/init.sh ===
