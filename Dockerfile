@@ -17,7 +17,7 @@ ENV TZ ${TZ}
 #     && rm -rf /var/cache/apk/*
 RUN apt-get update -y \
     && DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y tzdata \
+    && apt-get install -y tzdata wget \
     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone
 
@@ -37,6 +37,7 @@ RUN apt-get install -y \
     sqlite3 \
     unzip \
     zip
+#     wget !!!
 
 # === update-osmdata.yml ===
 RUN apt-get install -y \
@@ -90,11 +91,12 @@ RUN apt-get clean
 # === master/init.sh ===
 COPY ./master/init.sh /tmp/
 RUN chmod +x /tmp/init.sh \
-    && /tmp/init.sh \
-    && rm /tmp/init.sh
+    && /tmp/init.sh
+
+ENV USER=robot
 
 
 
 #VOLUME /data
-VOLUME ["/data", "/mnt/data", "/home"]
-# ENTRYPOINT [""]
+VOLUME ["/data", "/mnt/data", "/home/robot"]
+ENTRYPOINT ["/tmp/init.sh"]
