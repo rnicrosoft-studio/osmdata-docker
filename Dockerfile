@@ -119,7 +119,8 @@ RUN apt-get clean
 
 # === master/init.sh ===
 COPY ./master/init.sh /tmp/
-RUN chmod +x /tmp/init.sh
+RUN chmod +x /tmp/init.sh \
+    && /tmp/init.sh
 
 ENV USER=robot
 
