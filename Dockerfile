@@ -23,6 +23,35 @@ RUN apt-get update -y \
 
 
 
+# === master/init.sh ===
+RUN apt-get install -y \
+    apache2 \
+    bc \
+    certbot \
+    cimg-dev \
+    cmake \
+    g++ \
+    gdal-bin \
+    git \
+    jekyll \
+    jq \
+    libgdal-dev \
+    libosmium2-dev \
+    libproj-dev \
+    make \
+    osmium-tool \
+    python3-gdal \
+    python3-pyosmium \
+    rsync \
+    ruby-json \
+    ruby-sqlite3 \
+    spatialite-bin \
+    sqlite3 \
+    tmux \
+    unzip \
+    zip \
+    zsh
+
 # === servers/update-planet.yml ===
 RUN apt-get install -y \
     bc \
@@ -90,8 +119,7 @@ RUN apt-get clean
 
 # === master/init.sh ===
 COPY ./master/init.sh /tmp/
-RUN chmod +x /tmp/init.sh \
-    && /tmp/init.sh
+RUN chmod +x /tmp/init.sh
 
 ENV USER=robot
 
