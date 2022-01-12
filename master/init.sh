@@ -88,10 +88,10 @@ done
 
 # -- Get git repository --
 
-(cd /home/robot; su -c "git clone https://github.com/fossgis/osmdata $REPOSITORY" robot)
+(cd /home/robot; su -c "git clone https://github.com/fossgis/osmdata.git $REPOSITORY" robot)
 
 (cd $REPOSITORY; su -c "git checkout $OSMDATA_VERSION" robot)
-(cd /home/robot; su -c "git clone https://github.com/rnicrosoft-studio/osmdata-docker /home/robot/osmdata-docker" robot)
+(cd /home/robot; su -c "git clone https://github.com/rnicrosoft-studio/osmdata-docker.git /home/robot/osmdata-docker" robot)
 (cd /home/robot; su -c "rm -r $REPOSITORY/master/ ; cp -r /home/robot/osmdata-docker/master/ $REPOSITORY/ ; chmod +x $REPOSITORY/master/*.sh" robot)
 
 # -- Run robot user setup --
