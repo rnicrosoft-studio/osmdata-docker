@@ -42,17 +42,14 @@ fi
 echo "System initialized."
 
 # ssh "robot@${IP}" mkdir planet
-mkdir planet
 # scp ~/osmdata/scripts/planet/* "robot@${IP}:planet/"
-cp ~/osmdata/scripts/planet/* planet/
 
 # ssh "robot@${IP}" planet/update.sh
-exec planet/update.sh
+exec ~/osmdata/scripts/planet/update.sh
 # ssh "robot@${IP}" sudo umount /mnt
 
 # hcloud volume detach planet
 
 # hcloud server delete $SERVER
-rm -r planet
 
 echo "run-update-planet done."
