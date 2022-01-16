@@ -13,7 +13,7 @@ Dockerfile for [OSMData](https://github.com/fossgis/osmdata) generation without 
 docker volume create planet_data # >= 160 GB
 docker volume create osmdata_data
 docker volume create robot_data # >= 20 GB
-docker run -d \
+docker run -dit \
   --name osmdata \
   -v osmdata_data:/data \
   -v planet_data:/mnt/data \
