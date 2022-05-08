@@ -36,7 +36,7 @@ For the first run, execute
 
 To update planet and osmdata (for details, see [run-update.sh](./master/run-update.sh))
 ```
-su -c run-update.sh [-p] [JOBS...] robot
+su -c /home/robot/osmdata-docker/master/run-update.sh [-p] [JOBS...] robot
 ```
 
 ## Notes
